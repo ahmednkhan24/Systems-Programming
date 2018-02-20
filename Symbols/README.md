@@ -9,3 +9,4 @@ cause gcc -Wall hw1.c to issue zero warnings (and zero errors, duh).
 cause the output of readelf -s hw1.o to have identical values in the bolded sections of the output below:
 Symbol table ‘.symtab’ contains 18 entries:
 
+https://github.com/akhan227/Systems-Projects/blob/master/Symbols/table.PNG
