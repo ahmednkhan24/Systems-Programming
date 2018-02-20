@@ -1,0 +1,45 @@
+0. 
+	* Free secret. Just run the file by typing './0' without the single quotes.
+1. 
+	* Run ltrace by typing ltrace './1' without the single quotes.
+	* find this line: 'rand(a, b, c, d) = e' without the single quotes.
+	* convert the value of e from hex to decimal since that is the random value that is needed to retrieve the secret.
+	* enter the decimal value.
+2.
+	* run ltrace by typing './2' without the single quotes. 
+	* password is yes if curl_easy_perform is successful, no otherwise. 
+	* The password was yes because the return value of curl_easy_perform was 0 which means all fine.
+3.
+	* run ltrace by typing './3' without the single quotes.
+	* find this line:
+		* puts("checking for the existence of a "...checking for the existence of a file with a special name...) = 60 __xstat(1, "iamspecial", 0x7ffdf65062b0).
+	* xstat shows it's looking for a file called iamspecial. It's looking for info about a file system. 
+	* Make a directory with the name iamspecial by typing 'mkdir iamspecial' without the single quotes.
+	* the directory is made, now run the executable by typing './3' without the single quotes.
+4. 
+	* create an empty c program like this:
+		* vim C_FILENAME.c
+		* enter standard boiler plate by first typing i for insert, and then: #include <stdio.h>.
+		* save and exit: 'ESC:wq!' without the single quotes.
+	* Make a .so file from the .c file like this:
+		* 'gcc -shared -fpic -o SO_FILENAME.so C_FILENAME.c' without the single quotes.
+	* The first error it will output is: 
+		* error while loading shared libraries: lib361.so: cannot open shared object file: No such file or directory.
+	* set the environment path like this:
+		* setenv LD_LIBRARY_PATH .
+	* run ltrace on executable by typing 'ltrace ./4' without the single quotes.
+	* Find this line:
+		* secretoperation(3, 6, 0x7f93079a67a0, -1) = 10.
+		* it is trying to call a function call secretoperation that takes 4 integers as parameters, and returns 10.
+		* use vim to open the .c file and add the necessary function.
+	* recompile because we changed the library like this:
+		* 'gcc -shared -fpic -o SO_FILENAME.so C_FILENAME.c' without the single quotes.
+	* run ltrace on executable again.
+	* Find this line:
+		* secretoperation(1, 2, 2, -1) = 4.
+		* it is trying to call secretoperation again with different inputs and expects a different return value.
+		* use vim to open the .c file again and make these corrections:
+			* if the first parameter is 1 and the second parameter is 6, return 10. Else return 4.
+	* recompile because we changed the library like this:
+		* gcc -shared -fpic -o SO_FILENAME.so C_FILENAME.c.
+	* run the executable by typing './4' without the single quotes.
