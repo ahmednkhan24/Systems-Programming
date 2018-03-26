@@ -1,4 +1,5 @@
-# Systems Programming CS 361
+# Systems Programming 
+## University of Illinois (Chicago) - CS 361
 
 Assignments I have completed for the systems class I am taking during the Spring 2018 semester.
 
